@@ -1,35 +1,35 @@
-/* Common styling for all draggable .image divs */
+/* Common styling for all draggable divs */
 .image {
-  height: 300px;
   width: 200px;
+  height: 300px;
   margin: 20px;
   background-size: cover;
   background-position: center;
-  cursor: move; /* Indicates draggable */
+  cursor: grab; /* visually indicates draggable */
 }
 
 /* Unique backgrounds for each div */
-#div1 {
+#drag1 {
   background-image: url("https://picsum.photos/id/237/200/300");
 }
 
-#div2 {
+#drag2 {
   background-image: url("https://picsum.photos/seed/picsum/200/300");
 }
 
-#div3 {
+#drag3 {
   background-image: url("https://picsum.photos/200/300?grayscale");
 }
 
-#div4 {
-  background-image: url("https://picsum.photos/200/300/");
+#drag4 {
+  background-image: url("https://picsum.photos/200/300");
 }
 
-#div5 {
+#drag5 {
   background-image: url("https://picsum.photos/200/300.jpg");
 }
 
-#div6 {
+#drag6 {
   background-image: url("https://picsum.photos/id/102/200/300");
 }
 
@@ -40,7 +40,7 @@
   align-items: center;
 }
 
-/* Optional: highlight an element on drag (if desired) */
+/* Optional: highlight a div while it’s being dragged */
 .selected {
-  border: 5px solid rgb(0, 195, 255);
+  outline: 5px solid rgb(0, 195, 255);
 }

@@ -1,49 +1,43 @@
-// Select all the divs that have the "image" class
+// Grab all draggable "image" elements
 const images = document.querySelectorAll(".image");
 
-// This variable will hold a reference to the div being dragged
+// We'll store a reference to the item being dragged
 let draggedItem = null;
 
-// Add event listeners to each of the 6 divs
 images.forEach((image) => {
-  // When you start dragging an element
+  // Drag Start
   image.addEventListener("dragstart", (event) => {
     draggedItem = event.target;
-
-    // (Optional) Add a temporary visual cue
     event.target.classList.add("selected");
   });
 
-  // When the dragged element is over another droppable target
+  // Allow Drop (Drag Over)
   image.addEventListener("dragover", (event) => {
-    // By default, dropping is not allowed in most browsers, so we preventDefault
     event.preventDefault();
   });
 
-  // When the dragged element leaves the original element
+  // Drag Leave
   image.addEventListener("dragleave", (event) => {
-    // (Optional) Remove the visual cue if you don’t want it to remain
     event.target.classList.remove("selected");
   });
 
-  // When the element is dropped on another element
+  // Drop
   image.addEventListener("drop", (event) => {
     event.preventDefault();
-
-    // Remove the selected class from both the dragged and the drop target
+    // Remove highlight from both the dragged item and the drop target
     draggedItem.classList.remove("selected");
     event.target.classList.remove("selected");
 
-    // If the dropped target is the same as the dragged element, do nothing
+    // If the dragged item and drop target are the same, do nothing
     if (draggedItem === event.target) return;
 
-    // Swap the background images
+    // Swap backgrounds
     const tempBg = draggedItem.style.backgroundImage;
     draggedItem.style.backgroundImage = event.target.style.backgroundImage;
     event.target.style.backgroundImage = tempBg;
   });
 
-  // When the drag ends, clean up (remove the visual cue, etc.)
+  // Drag End (cleanup)
   image.addEventListener("dragend", () => {
     images.forEach((img) => img.classList.remove("selected"));
     draggedItem = null;
